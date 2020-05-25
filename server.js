@@ -14,7 +14,7 @@ app.get('/', function(req,res)
     res.sendFile('index.html', { root: __dirname+'/dist/CoLA'});
 });
 
-app.get('/test', function(req,res)
+app.get('/Users', function(req,res)
 {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
