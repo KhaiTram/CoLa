@@ -1,4 +1,7 @@
-<h2>User List</h2>
+<h2>User List {{users[2].Nachname}}</h2>
 <ul *ngFor="let user of users">
-    <li>{{user.benutzername}}</li>
+    <li>
+        <span class="badge">{{user.Benutzername}}</span> 
+    </li>
 </ul>
+<button onclick="displayUsers" ></button>

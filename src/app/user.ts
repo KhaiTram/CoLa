@@ -1,8 +1,8 @@
 export interface User {
-    benutzername: string,
-    email: string,
-    passwort: string,
-    vorname: string,
-    nachname: string,
-    kapazitaet: number
+    Benutzername: string,
+    Email: string,
+    Passwort: string,
+    Vorname: string,
+    Nachname: string,
+    Kapazitaet: number
 };
