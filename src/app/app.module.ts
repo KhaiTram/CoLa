@@ -10,13 +10,15 @@ import { ArticleService } from './article.service';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryService } from './inventory.service';
+import { RegisterComponent } from './registerLogin/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     ArticleListComponent,
-    InventoryComponent
+    InventoryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
