@@ -8,19 +8,22 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './user.service';
 import { ArticleService } from './article.service';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryService } from './inventory.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService,ArticleService],
+  providers: [UserService,ArticleService,InventoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
