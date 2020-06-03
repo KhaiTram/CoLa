@@ -12,7 +12,7 @@ export class ProductCategoryService {
         private http: HttpClient) { }
          
         
-    getUsers(): Observable<ProductCategory[]> {
+    getCategories(): Observable<ProductCategory[]> {
         return this.http.get<ProductCategory[]>(this.UsersUrl)
     }
 }
