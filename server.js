@@ -13,6 +13,31 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/dist/CoLA' });
 });
 
+app.get('/Kategorien', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    
+    con.connect(function (err) {
+        if (err) throw err;
+        console.log("connected");
+        con.query("SELECT * FROM Produktkategorien", function (err, result) {
+            if (err) throw err;
+
+            res.send(result);
+        });
+
+        con.end();
+
+    });
+});
+
+
 app.get('/Users', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",

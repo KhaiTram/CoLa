@@ -12,6 +12,8 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryService } from './inventory.service';
 import { RegisterComponent } from './registerLogin/register.component';
 import { CommentComponent } from './comment/comment.component';
+import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { CommentComponent } from './comment/comment.component';
     ArticleListComponent,
     InventoryComponent,
     RegisterComponent,
-    CommentComponent
+    CommentComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
