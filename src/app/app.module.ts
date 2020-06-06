@@ -13,6 +13,7 @@ import { InventoryService } from './inventory.service';
 import { RegisterComponent } from './registerLogin/register.component';
 import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HeaderComponent } from './header/header.component';
     InventoryComponent,
     RegisterComponent,
     CommentComponent,
-    HeaderComponent
+    HeaderComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
