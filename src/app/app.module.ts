@@ -14,6 +14,7 @@ import { RegisterComponent } from './registerLogin/register.component';
 import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { ProductCategoryService } from './productCategory.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService,ArticleService,InventoryService],
+  providers: [UserService,ArticleService,InventoryService,ProductCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
