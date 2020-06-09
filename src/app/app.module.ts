@@ -15,6 +15,9 @@ import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { ProductCategoryService } from './productCategory.service';
+import { ImageService } from './image.service';
+import { ArticlesComponent } from './articles/articles.component';
+import { FilterimagesPipe } from "./filterimages.pipe"
 
 
 @NgModule({
@@ -26,6 +29,8 @@ import { ProductCategoryService } from './productCategory.service';
     RegisterComponent,
     CommentComponent,
     HeaderComponent,
+    ArticlesComponent,
+    FilterimagesPipe,
     CategoryListComponent
   ],
   imports: [
@@ -33,7 +38,13 @@ import { ProductCategoryService } from './productCategory.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService,ArticleService,InventoryService,ProductCategoryService],
+  providers: [
+    UserService,
+    ArticleService,
+    InventoryService,
+    ProductCategoryService,
+    ImageService,
+    FilterimagesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
