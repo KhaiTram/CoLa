@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductCategoryService } from '..//productCategory.service';
 
 @Component({
   selector: 'app-category-list',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
-
-  constructor() { }
+  arrCategoryList = [];
+  constructor( private productCategoryService : ProductCategoryService) { }
 
   ngOnInit(): void {
+    this.productCategoryService.getCategories()
+    .subscribe(data => this.arrCategoryList = data);
   }
 
 }
