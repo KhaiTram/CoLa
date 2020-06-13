@@ -7,14 +7,11 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class UserService {
     
-    private UsersUrl = 'http://localhost:8080/Users';
-    
-    constructor(
-        private http: HttpClient) { }
+
          
         
     
-    private UsersUrl = 'http://localhost:8080/User';
+    private UsersUrl = 'http://localhost:8080/Users';
     httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
