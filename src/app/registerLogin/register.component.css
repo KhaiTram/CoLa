@@ -1,0 +1,10 @@
+#register{
+    left: 900px;
+    position: relative;
+}
+
+#sign_up{
+    position: relative;
+    top: 200px;
+    left: 300px;
+}
