@@ -20,9 +20,14 @@ export class RegisterComponent implements OnInit {
   
   onSubmit(){
     console.log("Test");
-    var test = 'Hallo';
     var testUser = new User();
     testUser.Benutzername = this.name;
+    testUser.Email = "test@test.test";
+    testUser.Passwort = "Nase";
+    testUser.Vorname = "Hans";
+    testUser.Nachname = "Wurst";
+
+
      this.UserService.postUsers(testUser).subscribe(data => {}); 
      //Errorhandling
   }

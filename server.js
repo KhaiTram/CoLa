@@ -15,32 +15,7 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/dist/CoLA' });
 });
 //----------------USERS-METHODS---------------------------------------------------
-// app.put('/User', function (req, res) {
-//     var con = mysql.createConnection({
-//         database: "20_Gruppe1_DB",
-//         port: "20133",
-//         host: "195.37.176.178",
-//         user: "Gruppe1New",
-//         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
-//     });
 
-    
-//     con.connect(function (err) {
-//         if (err) throw err;
-//         console.log("connected");
-
-//         var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
-//         var values = [[]];
-//         con.query(sql,[values], function (err, result) {
-//             if (err) throw err;
-
-//             res.send(result);
-//         });
-
-//         con.end();
-
-//     });
-// });
 
 app.post('/User', function (req, res) {
     var con = mysql.createConnection({
@@ -51,27 +26,46 @@ app.post('/User', function (req, res) {
         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
     });
 
-    const postUser = req.body.user;
+    const benutzername = req.body.Benutzername;
+    const email = req.body.Email;
+    const passwort = req.body.Passwort;
+    const vorname = req.body.Vorname;
+    const nachname  = req.body.Nachname;
 
     const data = { 
-        postUser
+        benutzername,
+        email,
+        passwort,
+        vorname,
+        nachname
     };
 
-    
     con.connect(function (err) {
         if (err) throw err;
-        console.log("connected");
-
-        var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
-        // var values = [[]];
-        con.query(sql,data, function (err, result) {
-            if (err) throw err;
-
-            res.send(result);
+        console.log("Connected!");
+        //Insert a record in the "customers" table:
+        var post  = {Benutzername: benutzername, Email: email, Passwort: passwort, Vorname: vorname, Nachname: nachname};
+        var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname) SET ?";
+        con.query(sql,post, function (err, result) {
+          if (err) throw err;
+          console.log("1 record inserted");
         });
 
         con.end();
 
+    
+        //         if (err) throw err;
+        //         console.log("connected");
+        
+        //         var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
+        //         // var values = [[]];
+        //         con.query(sql,data, function (err, result) {
+        //             if (err) throw err;
+        
+        //             res.send(result);
+        //         });
+        
+        //         con.end();
     });
 });
 
@@ -112,7 +106,7 @@ app.get('/Users', function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
         console.log("connected");
-        var sql = "";
+        var sql = "SELECT * FROM User";
         con.query(sql, function (err, result) {
             if (err) throw err;
 

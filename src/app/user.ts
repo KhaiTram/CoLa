@@ -5,5 +5,4 @@ export class User {
     Passwort: string;
     Vorname: string;
     Nachname: string;
-    Kapazitaet: number;
 };
