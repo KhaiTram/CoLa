@@ -15,7 +15,34 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/dist/CoLA' });
 });
 //----------------USERS-METHODS---------------------------------------------------
-app.put('/User', function (req, res) {
+// app.put('/User', function (req, res) {
+//     var con = mysql.createConnection({
+//         database: "20_Gruppe1_DB",
+//         port: "20133",
+//         host: "195.37.176.178",
+//         user: "Gruppe1New",
+//         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+//     });
+
+    
+//     con.connect(function (err) {
+//         if (err) throw err;
+//         console.log("connected");
+
+//         var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
+//         var values = [[]];
+//         con.query(sql,[values], function (err, result) {
+//             if (err) throw err;
+
+//             res.send(result);
+//         });
+
+//         con.end();
+
+//     });
+// });
+
+app.post('/User', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
         port: "20133",
@@ -24,14 +51,20 @@ app.put('/User', function (req, res) {
         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
     });
 
+    const postUser = req.body.user;
+
+    const data = { 
+        postUser
+    };
+
     
     con.connect(function (err) {
         if (err) throw err;
         console.log("connected");
 
         var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
-        var values = [[]];
-        con.query(sql,[values], function (err, result) {
+        // var values = [[]];
+        con.query(sql,data, function (err, result) {
             if (err) throw err;
 
             res.send(result);
@@ -66,7 +99,6 @@ app.get('/Kategorien', function (req, res) {
     });
 });
 
-
 app.get('/Users', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
@@ -80,7 +112,7 @@ app.get('/Users', function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
         console.log("connected");
-        var sql = "SELECT * FROM User";
+        var sql = "";
         con.query(sql, function (err, result) {
             if (err) throw err;
 
@@ -145,5 +177,5 @@ app.get('/Lagerbestand', function (req, res) {
 
 
 app.listen(8080, function () {
-    console.log('erfolg!');
+    console.log('Erfolg!');
 });

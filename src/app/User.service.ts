@@ -7,11 +7,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class UserService {
     
-
-         
-        
-    
     private UsersUrl = 'http://localhost:8080/Users';
+    private PostUsersUrl = 'http://localhost:8080/User';
     httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
@@ -24,7 +21,7 @@ export class UserService {
         // if(newUser.Email == null){
         // }   
         console.log("Post User:"+newUser);
-        return this.http.post(this.UsersUrl, newUser, this.httpOptions).pipe(map((x: User) => x));
+        return this.http.post(this.PostUsersUrl, newUser, this.httpOptions).pipe(map((x: User) => x));
         // return this.http.post(this.UsersUrl, newUser, this.httpOptions);
     }
 
