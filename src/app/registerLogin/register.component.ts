@@ -11,8 +11,13 @@ import { User } from '../user';
 }) 
 
 export class RegisterComponent implements OnInit {
-  name = 'Hans';
-  alterEgo = 'Peter';
+  name = '';
+  benutzername = '';
+  email = '';
+  password = '';
+  vorname = '';
+  nachname = '';
+
   constructor(private UserService: UserService) { } 
     ngOnInit() {
       
@@ -21,11 +26,11 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     console.log("Test");
     var testUser = new User();
-    testUser.Benutzername = this.name;
-    testUser.Email = "test@test.test";
-    testUser.Passwort = "Nase";
-    testUser.Vorname = "Hans";
-    testUser.Nachname = "Wurst";
+    testUser.Benutzername = this.benutzername;
+    testUser.Email = this.email;
+    testUser.Passwort = this.password;
+    testUser.Vorname = this.vorname;
+    testUser.Nachname = this.nachname;
 
 
      this.UserService.postUsers(testUser).subscribe(data => {}); 

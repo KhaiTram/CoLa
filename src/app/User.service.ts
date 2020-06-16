@@ -17,9 +17,7 @@ export class UserService {
         return this.http.get<User[]>(this.UsersUrl)
     }
 
-    postUsers(newUser: User): Observable<User> {
-        // if(newUser.Email == null){
-        // }   
+    postUsers(newUser: User): Observable<User> { 
         console.log("Post User:"+newUser);
         return this.http.post(this.PostUsersUrl, newUser, this.httpOptions).pipe(map((x: User) => x));
         // return this.http.post(this.UsersUrl, newUser, this.httpOptions);
