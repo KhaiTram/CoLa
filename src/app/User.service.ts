@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
     
     private UsersUrl = 'http://localhost:8080/Users';
-    private PostUsersUrl = 'http://localhost:8080/User';
+
     httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
