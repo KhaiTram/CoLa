@@ -19,21 +19,20 @@ export class RegisterComponent implements OnInit {
   nachname = '';
 
   constructor(private UserService: UserService) { } 
-    ngOnInit() {
-      
+    ngOnInit() { 
   }
   
   onSubmit(){
-    console.log("Test");
-    var testUser = new User();
-    testUser.Benutzername = this.benutzername;
-    testUser.Email = this.email;
-    testUser.Passwort = this.password;
-    testUser.Vorname = this.vorname;
-    testUser.Nachname = this.nachname;
+    
+    var newUser = new User();
+    newUser.Benutzername = this.benutzername;
+    newUser.Email = this.email;
+    newUser.Passwort = this.password;
+    newUser.Vorname = this.vorname;
+    newUser.Nachname = this.nachname;
 
-
-     this.UserService.postUsers(testUser).subscribe(data => {}); 
+    console.log(newUser);
+     this.UserService.postUsers(newUser).subscribe(data => {}); 
      //Errorhandling
   }
 }
