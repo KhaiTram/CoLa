@@ -61,7 +61,7 @@ app.get('/Kategorien', function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
         console.log("connected");
-        con.query("SELECT * FROM Produktkategorien", function (err, result) {
+        con.query("SELECT * FROM Produktkategorie", function (err, result) {
             if (err) throw err;
 
             res.send(result);
