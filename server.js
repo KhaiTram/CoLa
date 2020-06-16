@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 //----------------USERS-METHODS---------------------------------------------------
 
 
-app.post('/User', function (req, res) {
+app.post('/Users', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
         port: "20133",
@@ -25,47 +25,26 @@ app.post('/User', function (req, res) {
         user: "Gruppe1New",
         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
     });
-
+    console.log(req.body);
+    console.log(req.body.Nachname);
     const benutzername = req.body.Benutzername;
     const email = req.body.Email;
     const passwort = req.body.Passwort;
     const vorname = req.body.Vorname;
     const nachname  = req.body.Nachname;
 
-    const data = { 
-        benutzername,
-        email,
-        passwort,
-        vorname,
-        nachname
-    };
-
     con.connect(function (err) {
         if (err) throw err;
-        console.log("Connected!");
+        console.log(req.body);
         //Insert a record in the "customers" table:
         var post  = {Benutzername: benutzername, Email: email, Passwort: passwort, Vorname: vorname, Nachname: nachname};
-        var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname) SET ?";
+        var sql = 'INSERT INTO User SET ?';
         con.query(sql,post, function (err, result) {
           if (err) throw err;
           console.log("1 record inserted");
         });
 
         con.end();
-
-    
-        //         if (err) throw err;
-        //         console.log("connected");
-        
-        //         var sql = "INSERT INTO User (Benutzername, Email, Passwort, Vorname, Nachname, Kapazitaet) VALUES (?,?,?,?,?)";
-        //         // var values = [[]];
-        //         con.query(sql,data, function (err, result) {
-        //             if (err) throw err;
-        
-        //             res.send(result);
-        //         });
-        
-        //         con.end();
     });
 });
 
