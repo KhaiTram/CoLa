@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 
 app.use(express.static(path.join(__dirname, '/dist/CoLA')));
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
@@ -25,26 +25,34 @@ app.post('/Users', function (req, res) {
         user: "Gruppe1New",
         password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
     });
-    console.log(req.body);
-    console.log(req.body.Nachname);
-    const benutzername = req.body.Benutzername;
-    const email = req.body.Email;
-    const passwort = req.body.Passwort;
-    const vorname = req.body.Vorname;
-    const nachname  = req.body.Nachname;
 
-    con.connect(function (err) {
-        if (err) throw err;
-        console.log(req.body);
-        //Insert a record in the "customers" table:
-        var post  = {Benutzername: benutzername, Email: email, Passwort: passwort, Vorname: vorname, Nachname: nachname};
-        var sql = 'INSERT INTO User SET ?';
-        con.query(sql,post, function (err, result) {
-          if (err) throw err;
-          console.log("1 record inserted");
+    var User;
+    req.on('data',function(data) {
+        
+        User= JSON.parse(data.toString()); 
+        console.log(data.toString());
+        console.log(User);
+        const benutzername = User.Benutzername;
+        const email = User.Email;
+        const passwort = User.Passwort;
+        const vorname = User.Vorname;
+        const nachname  = User.Nachname;
+    
+    
+
+        con.connect(function (err) {
+            if (err) throw err;
+            //Insert a record in the "customers" table:
+            var post  = {Benutzername: benutzername, Email: email, Passwort: passwort, Vorname: vorname, Nachname: nachname};
+            var sql = 'INSERT INTO User SET ?';
+
+            con.query(sql,post, function (err, result) {
+                if (err) throw err;
+                console.log("1 record inserted");
+            });
+
+            con.end();
         });
-
-        con.end();
     });
 });
 

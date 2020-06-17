@@ -9,7 +9,7 @@ export class UserService {
     
     private UsersUrl = 'http://localhost:8080/Users';
 
-    httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+     httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
      
@@ -19,8 +19,11 @@ export class UserService {
 
     postUsers(newUser: User): Observable<User> { 
         console.log("Post User:"+newUser);
-        return this.http.post(this.UsersUrl, newUser, this.httpOptions).pipe(map((x: User) => x));
-        // return this.http.post(this.UsersUrl, newUser, this.httpOptions);
+
+     var test = {name: "test"};
+     console.log(test.name);
+        return this.http.post(this.UsersUrl,JSON.stringify(newUser), this.httpOptions).pipe(map((x: User) => x));
+     
     }
 
 
