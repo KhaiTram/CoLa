@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { InventoryComponent} from './inventory/inventory.component';
+
 import { UserListComponent } from './user-list/user-list.component';
-import { CommentComponent } from './comment/comment.component'
-import { HeaderComponent } from './header/header.component'
-//import { RegisterComponent } from './registerLogin/register.component'
+import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { RegisterComponent } from './register/register.component';
+import { CommentComponent } from './comment/comment.component';
+import { HeaderComponent } from './header/header.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 
 
 const routes: Routes = [
-  {path: 'articel', component: ArticleListComponent},
+  {path: 'user-list', component: UserListComponent},
+  {path: 'articles', component: ArticlesComponent},
+  {path: 'articles-list', component: ArticleListComponent},
   {path: 'inventory', component: InventoryComponent},
-  //{path: 'registerLogin', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'comment', component: CommentComponent},
+  {path: 'header', component: HeaderComponent},
+  {path: 'category-list', component: CategoryListComponent}
 ];
 
 @NgModule({
@@ -21,4 +29,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[ArticleListComponent, InventoryComponent, UserListComponent, CommentComponent];
+export const routingComponents =[UserListComponent, ArticlesComponent, ArticleListComponent, InventoryComponent,  RegisterComponent, CommentComponent, HeaderComponent, CategoryListComponent];

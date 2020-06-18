@@ -1,0 +1,12 @@
+#input_fields{
+    position: relative;
+    left: 520px;
+    top: 100px;
+}
+.form-group{
+    width: 300px;
+}
+
+button{
+    width: 300px;
+}

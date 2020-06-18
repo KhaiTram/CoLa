@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   vorname = '';
   nachname = '';
 
+  show = true;
+
   constructor(private UserService: UserService) { } 
     ngOnInit() { 
   }
@@ -31,8 +33,8 @@ export class RegisterComponent implements OnInit {
     newUser.Vorname = this.vorname;
     newUser.Nachname = this.nachname;
 
-    console.log(newUser);
-     this.UserService.postUsers(newUser).subscribe(data => {}); 
-     //Errorhandling
+    
+    this.UserService.postUsers(newUser).subscribe(data => {}); 
+    this.show = !this.show;
   }
 }
