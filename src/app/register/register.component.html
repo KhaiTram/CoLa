@@ -9,35 +9,74 @@
     <div id="input_fields">
       <h1>Jetzt Registrieren!</h1>
       <div class="form-group">
-          <label for="name">Benutzername:</label>
-          <input type="text" class="form-control" id="name" required [(ngModel)]="benutzername" name="benutzername">
-        </div>
+          <label for="benutzerName">Benutzername:</label>
+          <input type="text" 
+          class="form-control" 
+          required minlength = "8" 
+          [(ngModel)]="benutzername" 
+          name="benutzername" 
+          #bName="ngModel">
+          <div class="alert alert-danger" *ngIf="bName.touched &&  !bName.valid">
+            <div *ngIf="bName.errors.required">Benutzername ist erforderlich</div>
+            <div *ngIf="bName.errors.minlength">
+              Benutzername sollte min.{{bName.errors.minlength.requiredLength}} Zeichen haben
+            </div>
+          </div>
+      </div>
         
         <div class="form-group">
-          <label for="alterEgo">Email:</label>
-          <input type="text"  class="form-control" id="alterEgo"
-                [(ngModel)]="email" name="email">
+          <label for="eMail">Email:</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          required minlength = "1"
+          [(ngModel)]="email" 
+          name="email">
         </div>
 
         <div class="form-group">
-          <label for="alterEgo">Passwort:</label>
-          <input type="password"  class="form-control" id="alterEgo"
-                [(ngModel)]="password" name="password">
+          <label for="passWord">Passwort:</label>
+          <input 
+          type="password"  
+          class="form-control" 
+          required minlength = "8"
+          [(ngModel)]="password" 
+          name="password"
+          #passWord="ngModel">
+          <div class="alert alert-danger" *ngIf="passWord.touched && !passWord.valid">
+          <div *ngIf="passWord.errors.required">
+            Passwort sollte min 8 Zeichen haben
+          </div>
+          </div>
         </div>
 
         <div class="form-group">
-          <label for="alterEgo">Vorname:</label>
-          <input type="text"  class="form-control" id="alterEgo"
-                [(ngModel)]="vorname" name="vorname">
+          <label for="firstName">Vorname:</label>
+          <input 
+          type="text"  
+          class="form-control" 
+          required minlength = "1"
+          [(ngModel)]="vorname" 
+          name="vorname">
         </div>
 
         <div class="form-group">
-          <label for="alterEgo">Nachname:</label>
-          <input type="text"  class="form-control" id="alterEgo"
-                [(ngModel)]="nachname" name="nachname">
+          <label for="lastName">Nachname:</label>
+          <input 
+          type="text"  
+          class="form-control" 
+          required [(ngModel)]="nachname" 
+          name="nachname">
         </div>
 
-      <button type="submit" (click) ="onSubmit()" class="btn btn-success" routerLink = "/articles">Registrieren</button>
+      <button 
+      type="submit" 
+      (click) ="onSubmit()" 
+      class="btn btn-success" 
+      routerLink = "/articles" 
+      [disabled]="nachname === ''">
+      Registrieren
+      </button>
     </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
