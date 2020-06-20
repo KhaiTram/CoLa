@@ -18,13 +18,9 @@ export class UserService {
     }
 
     postUsers(newUser: User): Observable<User> { 
-        console.log("Post User:"+newUser);
-
-     var test = {name: "test"};
-     console.log(test.name);
-        return this.http.post(this.UsersUrl,JSON.stringify(newUser), this.httpOptions).pipe(map((x: User) => x));
-     
+        return this.http.post(this.UsersUrl,JSON.stringify(newUser), this.httpOptions).pipe(map((x: User) => x));  
     }
 
+    
 
 }
