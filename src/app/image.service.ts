@@ -15,10 +15,10 @@ export class ImageService {
     }    
 }    
 const Imagesdelatils = [    
-      { "description": "Desinfektionsmittel", "Produktkategorie_ID": 2, "url": "assets/Images/Desinfektionsmittel.jpeg" },
+      { "description": "Desinfektionsmittel", "Produktkategorie_ID": 2, "url": "assets/Images/Desinfektionsmittel.jpg" },
       { "description": "Druckpapier", "Produktkategorie_ID": 3, "url": "assets/Images/Druckpapier.jpg" },
-      { "description": "Eier", "Produktkategorie_ID": 1, "url": "assets/Images/Eier.jpeg" },
-      { "description": "Fleisch", "Produktkategorie_ID": 1, "url": "assets/Images/Fleisch.jpeg" },
+      { "description": "Eier", "Produktkategorie_ID": 1, "url": "assets/Images/Eier.jpg" },
+      { "description": "Fleisch", "Produktkategorie_ID": 1, "url": "assets/Images/Fleisch.jpg" },
       { "description": "Hefe", "Produktkategorie_ID": 1, "url": "assets/Images/Hefe.jpg" },
       { "description": "Ibuprofen", "Produktkategorie_ID": 4, "url": "assets/Images/Ibuprofen.jpg" },
       { "description": "Klopapier", "Produktkategorie_ID": 2, "url": "assets/Images/Klopapier.jpg" },
