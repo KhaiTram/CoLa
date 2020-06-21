@@ -129,6 +129,35 @@ app.get('/Artikel', function (req, res) {
 
     });
 });
+
+//------------------COMMENTS-METHODS-----------------------------
+
+app.get('/Kommentar', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    con.connect(function (err) {
+        if (err) throw err;
+        console.log("connected");
+
+        var sql = "SELECT * FROM Kommentar";
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+
+            res.send(result);
+        });
+
+        con.end();
+
+    });
+});
+
+
 //----------------INVENTORY-METHODS---------------------------------------------------
 app.get('/Lagerbestand', function (req, res) {
     var con = mysql.createConnection({
