@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'comment', component: CommentComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'category-list', component: CategoryListComponent}
+  {path: 'category-list', component: CategoryListComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -29,4 +31,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[UserListComponent, ArticlesComponent, ArticleListComponent, InventoryComponent,  RegisterComponent, CommentComponent, HeaderComponent, CategoryListComponent];
+export const routingComponents =[UserListComponent, ArticlesComponent, ArticleListComponent, InventoryComponent,  RegisterComponent, CommentComponent, HeaderComponent, CategoryListComponent, LoginComponent];
