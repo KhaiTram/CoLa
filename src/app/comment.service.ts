@@ -10,7 +10,7 @@ export class commentService {
 
     constructor(private http: HttpClient){}
 
-    getComment(): Observable<comment[]> {
+    getComments(): Observable<comment[]> {
         return this.http.get<comment[]>(this.getCommentUrl)
     }
 

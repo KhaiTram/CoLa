@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 import { ArticleService } from './article.service';
 import { ProductCategoryService } from './productCategory.service';
 import { ImageService } from './image.service';
+import { commentService} from './comment.service';
 import { InventoryService } from './inventory.service';
 import { FilterArticlesPipe } from "./filterArticles.pipe";
 
@@ -29,6 +30,7 @@ import { FilterArticlesPipe } from "./filterArticles.pipe";
   providers: [
     UserService,
     ArticleService,
+    commentService,
     InventoryService,
     ProductCategoryService,
     ImageService,

@@ -1,4 +1,4 @@
-<div>
+<div class="fluid-Container">
     <div class="row">
         <div class="col-sm-12 btn btn-primary">
             Sortiment
@@ -35,4 +35,24 @@
             </div>
         </div>
     </div>
+
+    <button id="button" class="btn-primary" (click) ="onClick()" >Speichern</button>
+
+
+
+    <div id="modal" class="bg-modal">
+        <div class="modal-content">
+
+            <div class="close" (click)="onClose()">+</div>
+
+            <img id="virus" src="assets/Images/virus.png" alt="Coronavirus" >
+           
+            {{comments[0].Kommentar_Text}}
+
+            <a href="" class="button">Verstanden!</a>
+        </div>
+
+    </div>
+    <span class="badge"></span>
+
 </div>

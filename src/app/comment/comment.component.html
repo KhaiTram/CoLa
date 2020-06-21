@@ -1,28 +1,16 @@
+<div id="modal" class="bg-modal">
+  <div class="modal-content">
 
-<h2>Comment</h2>
-<ul *ngFor="let comment of comments">
-<li>
-    <div class="bg-modal">
-        <div class="modal-content"> 
-         
-          <div class="close">+</div>
-          
-          <img src="https://lh3.googleusercontent.com/proxy/1is3yl89wlw1B0cMrU-V_uR_4zD_WvCaDVw6MbuCXlnyB6O9aFjIm4velGO-9XcZ5Sw_lkHhYnMAu0iwyzv4FDypiVmTYa5UWCmDaeWhQNJiAV1q"alt="">
-          <form action="">
-            <input type="text" placeholder="kommentar">
-            
-            <p> test {{comments[0].MaximaleAnzahl}}</p>
-                {{comments[0].Kommentartext}}
+    <div class="close">+</div>
 
-            <a href=""="button">Verstanden!</a>
-          </form>
-          
-          
-        </div>
-        
-        
-      </div>
-<span class="badge">{{comment.User_Benutzername}}</span> 
-</li>
-</ul>
+    <img id="virus" src="assets/Images/virus.png" alt="Coronavirus">
+    <input type="text" placeholder="kommentar">
+    <p> test {{comments[0].ID}}</p>
+    {{comments[0].Kommentar_Text}}
+
+    <a href="" class="button">Verstanden!</a>
+  </div>
+
+</div>
+<span class="badge"></span>
 

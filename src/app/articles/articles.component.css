@@ -71,4 +71,46 @@ input::-webkit-inner-spin-button {
 input:disabled{
     background-color:white;
 }
-         
+
+
+
+/* modal css */
+#virus{
+    width: 30%;
+    margin-left: 35%;
+}
+
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  input {
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+  }
+ 
+  .close {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
