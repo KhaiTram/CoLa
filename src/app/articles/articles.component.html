@@ -26,8 +26,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4" *ngFor="let img of (allImages | filterimages:filterBy)">
-            <img src="{{img.url}}" class="img" width="240" height="170">
+        <div class="col-sm-4" *ngFor="let article of (allArticles | filterArticles:filterBy)">
+            <img src="assets/Images/{{article.Produktname}}.jpg" class="img" width="240" height="170">
             <div class="qty mt-5">
                 <span class="minus bg-dark">-</span>
                 <input type="number" class="count" name="qty" value="1">

@@ -1,12 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterimages'
+  name: 'filterArticles'
 })
-export class FilterimagesPipe implements PipeTransform {
+export class FilterArticlesPipe implements PipeTransform {
 
   transform(items: any[], articles: number): any {
-    if (articles === 0) { return items } else {
+    if (articles === 0) {
+      return items
+    }
+    else {
       console.log(articles);
       return items.filter(item => {
         return item.Produktkategorie_ID === articles;

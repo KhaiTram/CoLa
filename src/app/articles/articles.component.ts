@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ImageService } from '../image.service';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-articles',
@@ -11,18 +11,18 @@ import { ImageService } from '../image.service';
 
 export class ArticlesComponent implements OnChanges {
 
-  images: any[];
+  articles: any[];
   filterBy?: number = 0
-  allImages: any[] = [];
+  allArticles: any[] = [];
 
 
   
 
-  constructor(private imageService: ImageService) {
-    this.allImages = this.imageService.getImages();
+  constructor(private articleService: ArticleService) {
+    this.articleService.getArticles().subscribe(data => this.allArticles = data);;
   }
   ngOnChanges() {
-    this.allImages = this.imageService.getImages();
+   this.articleService.getArticles().subscribe(data => this.allArticles = data);;
   }
 }
 

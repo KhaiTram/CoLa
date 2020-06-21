@@ -11,14 +11,14 @@ import { ArticleService } from './article.service';
 import { ProductCategoryService } from './productCategory.service';
 import { ImageService } from './image.service';
 import { InventoryService } from './inventory.service';
-import { FilterimagesPipe } from "./filterimages.pipe";
+import { FilterArticlesPipe } from "./filterArticles.pipe";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    FilterimagesPipe,
+    FilterArticlesPipe,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,7 @@ import { FilterimagesPipe } from "./filterimages.pipe";
     InventoryService,
     ProductCategoryService,
     ImageService,
-    FilterimagesPipe],
+    FilterArticlesPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
