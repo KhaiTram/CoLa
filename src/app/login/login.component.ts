@@ -18,8 +18,6 @@ export class LoginComponent implements OnInit
 
   ngOnInit() 
   {
-    this.UserService.getUsers().subscribe(data => this.users = data);
-    console.log(this.activeUser);
   }
 
   public getCurrentUser()
@@ -36,6 +34,8 @@ export class LoginComponent implements OnInit
     var username = loginElement.value;
     var password = passwordElement.value;
     var auth = false;
+    console.log(username);
+    console.log(password);
 
     auth = this.AuthService.authenticateLogin(username, password);
 

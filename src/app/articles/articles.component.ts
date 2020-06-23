@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { commentService } from '../comment.service';
 import { InventoryService } from '../inventory.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-articles',
@@ -18,17 +19,20 @@ export class ArticlesComponent implements OnInit, OnChanges {
   comments: any[];
   inventories: any[];
   user: any = { Benutzername: "Tobias" };
+  currentUser: any;
 
 
 
   constructor(private commentService: commentService,
-    private inventoryService: InventoryService) { }
+    private inventoryService: InventoryService, 
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.commentService.getComments().subscribe(data => this.comments = data);
     this.inventoryService.getInventoryProducts().subscribe(data => {
       this.UserArticles = data.filter(x => x.User_Benutzername === this.user.Benutzername);
     });
+    this.currentUser = this.authService.getCurrentUser();
   };
 
   ngOnChanges() {
@@ -46,7 +50,7 @@ export class ArticlesComponent implements OnInit, OnChanges {
   };
 
   onClick() {
-    console.log(this.UserArticles);
+    console.log(this.currentUser);
     this.UserArticles.forEach(value =>{
       this.addToInventory(value);
       if (value.Menge > value.MaximaleAnzahl) {
