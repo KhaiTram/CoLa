@@ -7,11 +7,16 @@ import { Observable} from 'rxjs';
 export class InventoryService {
 
     private getInventoryUrl = 'http://localhost:8080/Lagerbestand';
+    private getInventoryProductsUrl = 'http://localhost:8080/ProduktLager';
 
     constructor(private http: HttpClient){}
 
     getInventory(): Observable<Inventory[]> {
         return this.http.get<Inventory[]>(this.getInventoryUrl)
+    }
+
+    getInventoryProducts(): Observable<any[]> {
+        return this.http.get<any[]>(this.getInventoryProductsUrl);
     }
 
 }

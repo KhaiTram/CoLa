@@ -11,38 +11,38 @@ import { InventoryService } from '../inventory.service';
 
 
 
-export class ArticlesComponent implements OnChanges {
+export class ArticlesComponent implements OnInit, OnChanges {
 
   articles: any[];
   filterBy?: number = 0
-  allArticles: any[] = [];
+  UserArticles: any[] = [];
 
   comments: any[];
-
   inventories: any[];
-
-  user: any= {Benutzername: "Tobias"};
-  
+  user: any = { Benutzername: "Tobias" };
 
 
-  constructor(private articleService: ArticleService, private commentService: commentService, private inventoryService: InventoryService) {
+
+  constructor(private articleService: ArticleService, private commentService: commentService,
+    private inventoryService: InventoryService) { }
+
+  ngOnInit() {
     this.commentService.getComments().subscribe(data => this.comments = data);
-    this.articleService.getArticles().subscribe(data => this.allArticles = data);
-    this.inventoryService.getInventory().subscribe(data => this.inventories = data);
+    this.inventoryService.getInventoryProducts().subscribe(data => {
+      this.UserArticles = data.filter(x => x.User_Benutzername === this.user.Benutzername);
+    });
+
   }
+
   ngOnChanges() {
-    this.articleService.getArticles().subscribe(data => this.allArticles = data);
-    this.inventoryService.getInventory().subscribe(data => this.inventories = data);
   }
+
 
   onClick() {
-    console.log(this.user);
-    var othis = this;
-    this.inventories.forEach(function (value) {
-      if (value.User_Benutzername = othis.user.Benutzername) {
-        if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
-          console.log(value);
-        }
+    console.log(this.UserArticles);
+    this.UserArticles.forEach(function (value) {
+      if (value.Menge > value.MaximaleAnzahl) {
+        console.log(value);
       }
     });
     document.getElementById('modal').style.display = "flex";
