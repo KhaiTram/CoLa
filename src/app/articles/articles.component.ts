@@ -54,7 +54,12 @@ export class ArticlesComponent implements OnInit, OnChanges {
       }
     });
     document.getElementById('modal').style.display = "flex";
-  };
+
+// function buildComment(comment: string[], Produktname?: string[]) {
+//   if (value.User_Benutzername = othis.user.Benutzername) {
+//    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
+//  return comment.join " " + Produktname.join ;
+//  };
 
   addToInventory() {
     
