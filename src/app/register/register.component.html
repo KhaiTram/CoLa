@@ -12,8 +12,8 @@
           <label for="benutzerName">Benutzername:</label>
           <input type="text" 
           class="form-control" 
-          required minlength = "8" 
-          [(ngModel)]="benutzername" 
+          required minlength = "4" 
+          [(ngModel)]="newUser.Benutzername" 
           name="benutzername" 
           #bName="ngModel">
           <div class="alert alert-danger" *ngIf="bName.touched &&  !bName.valid">
@@ -30,7 +30,7 @@
           type="text" 
           class="form-control" 
           required minlength = "1"
-          [(ngModel)]="email" 
+          [(ngModel)]="newUser.Email" 
           name="email">
         </div>
 
@@ -40,7 +40,7 @@
           type="password"  
           class="form-control" 
           required minlength = "8"
-          [(ngModel)]="password" 
+          [(ngModel)]="newUser.Passwort" 
           name="password"
           #passWord="ngModel">
           <div class="alert alert-danger" *ngIf="passWord.touched && !passWord.valid">
@@ -56,7 +56,7 @@
           type="text"  
           class="form-control" 
           required minlength = "1"
-          [(ngModel)]="vorname" 
+          [(ngModel)]="newUser.Vorname" 
           name="vorname">
         </div>
 
@@ -65,7 +65,7 @@
           <input 
           type="text"  
           class="form-control" 
-          required [(ngModel)]="nachname" 
+          required [(ngModel)]="newUser.Nachname" 
           name="nachname">
         </div>
 

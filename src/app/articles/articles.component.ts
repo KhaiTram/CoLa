@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ArticleService } from '../article.service';
 import { commentService } from '../comment.service';
 import { InventoryService } from '../inventory.service';
 
@@ -16,14 +15,13 @@ export class ArticlesComponent implements OnInit, OnChanges {
   articles: any[];
   filterBy?: number = 0
   UserArticles: any[] = [];
-
   comments: any[];
   inventories: any[];
   user: any = { Benutzername: "Tobias" };
 
 
 
-  constructor(private articleService: ArticleService, private commentService: commentService,
+  constructor(private commentService: commentService,
     private inventoryService: InventoryService) { }
 
   ngOnInit() {
@@ -31,23 +29,36 @@ export class ArticlesComponent implements OnInit, OnChanges {
     this.inventoryService.getInventoryProducts().subscribe(data => {
       this.UserArticles = data.filter(x => x.User_Benutzername === this.user.Benutzername);
     });
-
-  }
+  };
 
   ngOnChanges() {
-  }
+  };
 
+  substract(index) {
+
+    if (this.UserArticles[index].Menge > 0){
+      this.UserArticles[index].Menge--;
+    }
+  };
+
+  add(index) {
+    this.UserArticles[index].Menge++;
+  };
 
   onClick() {
     console.log(this.UserArticles);
-    this.UserArticles.forEach(function (value) {
+    this.UserArticles.forEach(value =>{
+      this.addToInventory;
       if (value.Menge > value.MaximaleAnzahl) {
         console.log(value);
       }
     });
     document.getElementById('modal').style.display = "flex";
-
   };
+
+  addToInventory() {
+    
+  }
 
   onClose() {
     document.getElementById('modal').style.display = "none";

@@ -11,12 +11,14 @@ import { User } from '../user';
 }) 
 
 export class RegisterComponent implements OnInit {
-  name = '';
-  benutzername = '';
-  email = '';
-  password = '';
-  vorname = '';
-  nachname = '';
+  
+  newUser :User = {
+    Benutzername: '',
+    Email: '',
+    Vorname: '',
+    Nachname: '',
+    Passwort: ''
+  };
 
   show = true;
 
@@ -25,16 +27,7 @@ export class RegisterComponent implements OnInit {
   }
   
   onSubmit(){
-    
-    var newUser = new User();
-    newUser.Benutzername = this.benutzername;
-    newUser.Email = this.email;
-    newUser.Passwort = this.password;
-    newUser.Vorname = this.vorname;
-    newUser.Nachname = this.nachname;
-
-    
-    this.UserService.postUsers(newUser).subscribe(data => {}); 
+    this.UserService.postUsers(this.newUser).subscribe(data => {}); 
     this.show = !this.show;
   }
 }
