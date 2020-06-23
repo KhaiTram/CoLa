@@ -51,13 +51,13 @@
         </div>
 
         <div class="form-group">
-          <label for="firstName">Vorname:</label>
+          <label for="VorName">Vorname:</label>
           <input 
           type="text"  
           class="form-control" 
           required minlength = "1"
           [(ngModel)]="newUser.Vorname" 
-          name="vorname">
+          name="Vorname">
         </div>
 
         <div class="form-group">
@@ -66,7 +66,7 @@
           type="text"  
           class="form-control" 
           required [(ngModel)]="newUser.Nachname" 
-          name="nachname">
+          name="Nachname">
         </div>
 
       <button 
@@ -74,7 +74,7 @@
       (click) ="onSubmit()" 
       class="btn btn-success" 
       routerLink = "/articles" 
-      [disabled]="nachname === ''">
+      >
       Registrieren
       </button>
     </div>

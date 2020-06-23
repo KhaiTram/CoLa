@@ -15,7 +15,30 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/dist/CoLA' });
 });
 //----------------USERS-METHODS---------------------------------------------------
+app.get('/Users', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
 
+    
+    con.connect(function (err) {
+        if (err) throw err;
+        console.log("connected");
+        var sql = "SELECT * FROM User";
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+
+            res.send(result);
+        });
+
+        con.end();
+
+    });
+});
 
 app.post('/Users', function (req, res) {
     var con = mysql.createConnection({
@@ -55,6 +78,42 @@ app.post('/Users', function (req, res) {
         });
     });
 });
+
+app.put('/Users', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    var User;
+    req.on('data',function(data) {
+        
+        User= JSON.parse(data.toString()); 
+        const email = User.Email;
+        const passwort = User.Passwort;
+    
+        con.connect(function (err) {
+            if (err) throw err;
+
+            //Update a record in the "customers" table:
+            var beforeSql = 'UPDATE User SET Passwort = ? WHERE Email = ?';
+            var inserts = [passwort, email];
+            sql = mysql.format(beforeSql, inserts);
+
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+                console.log("1 record updated");
+            });
+
+            con.end();
+        });
+    });
+});
+
+// Categories Methods
 
 app.get('/Kategorien', function (req, res) {
     var con = mysql.createConnection({
@@ -105,30 +164,7 @@ app.get('/ProduktLager', function (req, res) {
     });
 });
 
-app.get('/Users', function (req, res) {
-    var con = mysql.createConnection({
-        database: "20_Gruppe1_DB",
-        port: "20133",
-        host: "195.37.176.178",
-        user: "Gruppe1New",
-        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
-    });
 
-    
-    con.connect(function (err) {
-        if (err) throw err;
-        console.log("connected");
-        var sql = "SELECT * FROM User";
-        con.query(sql, function (err, result) {
-            if (err) throw err;
-
-            res.send(result);
-        });
-
-        con.end();
-
-    });
-});
 //----------------ARTICLE-METHODS---------------------------------------------------
 app.get('/Artikel', function (req, res) {
     var con = mysql.createConnection({
