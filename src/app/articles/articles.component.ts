@@ -48,20 +48,24 @@ export class ArticlesComponent implements OnInit, OnChanges {
   onClick() {
     console.log(this.UserArticles);
     this.UserArticles.forEach(value =>{
-      this.addToInventory;
+      this.addToInventory(value);
       if (value.Menge > value.MaximaleAnzahl) {
         console.log(value);
       }
     });
     document.getElementById('modal').style.display = "flex";
+  };
 
+  
 // function buildComment(comment: string[], Produktname?: string[]) {
 //   if (value.User_Benutzername = othis.user.Benutzername) {
 //    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
 //  return comment.join " " + Produktname.join ;
 //  };
 
-  addToInventory() {
+
+  addToInventory(article) {
+
     
   }
 
