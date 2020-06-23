@@ -13,6 +13,7 @@ import { ImageService } from './image.service';
 import { commentService} from './comment.service';
 import { InventoryService } from './inventory.service';
 import { FilterArticlesPipe } from "./filterArticles.pipe";
+import { AuthService } from './auth.service'
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FilterArticlesPipe } from "./filterArticles.pipe";
     InventoryService,
     ProductCategoryService,
     ImageService,
-    FilterArticlesPipe],
+    FilterArticlesPipe,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
