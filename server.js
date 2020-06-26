@@ -9,12 +9,11 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, '/dist/CoLA')));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
 app.get('/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/dist/CoLA' });
 });
 //----------------USERS-METHODS---------------------------------------------------
+
 app.get('/Users', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
@@ -113,7 +112,7 @@ app.put('/Users', function (req, res) {
     });
 });
 
-// Categories Methods
+//-------------------CATEGORY-METHODS---------------------------------------------------
 
 app.get('/Kategorien', function (req, res) {
     var con = mysql.createConnection({
@@ -164,8 +163,7 @@ app.get('/ProduktLager', function (req, res) {
     });
 });
 
-
-//----------------ARTICLE-METHODS---------------------------------------------------
+//-------------------ARTICLE-METHODS---------------------------------------------------
 app.get('/Artikel', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
@@ -191,7 +189,7 @@ app.get('/Artikel', function (req, res) {
     });
 });
 
-//------------------COMMENTS-METHODS-----------------------------
+//-------------------COMMENTS-METHODS------------------------------------------------
 
 app.get('/Kommentar', function (req, res) {
     var con = mysql.createConnection({
@@ -218,8 +216,8 @@ app.get('/Kommentar', function (req, res) {
     });
 });
 
+//-------------------INVENTORY-METHODS---------------------------------------------------
 
-//----------------INVENTORY-METHODS---------------------------------------------------
 app.get('/Lagerbestand', function (req, res) {
     var con = mysql.createConnection({
         database: "20_Gruppe1_DB",
@@ -244,7 +242,6 @@ app.get('/Lagerbestand', function (req, res) {
 
     });
 });
-
 
 
 app.listen(8080, function () {

@@ -21,6 +21,9 @@ export class UserService {
         return this.http.post(this.UsersUrl,JSON.stringify(newUser), this.httpOptions).pipe(map((x: User) => x));  
     }
 
-    
+    putUsers(newUser: User): Observable<User> { 
+        return this.http.put(this.UsersUrl,JSON.stringify(newUser), this.httpOptions).pipe(map((x: User) => x));  
+    }
+
 
 }

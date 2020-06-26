@@ -10,6 +10,8 @@ import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { LoginComponent } from './login/login.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
 
 
 
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path: 'comment', component: CommentComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'category-list', component: CategoryListComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'changePassword', component: ChangePasswordComponent}
 ];
 
 @NgModule({
@@ -30,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[UserListComponent, ArticlesComponent, ArticleListComponent, InventoryComponent,  RegisterComponent, CommentComponent, HeaderComponent, CategoryListComponent,LoginComponent]
+export const routingComponents =[UserListComponent, ArticlesComponent, ArticleListComponent, InventoryComponent,  RegisterComponent, CommentComponent, HeaderComponent, CategoryListComponent,LoginComponent, ChangePasswordComponent]
