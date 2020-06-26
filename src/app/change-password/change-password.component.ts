@@ -26,5 +26,7 @@ export class ChangePasswordComponent implements OnInit {
     this.UserService.putUsers(this.newUser).subscribe(data => {}); 
   }
 
-
+  onClose() {
+    document.getElementById('modal').style.display = "none";
+  };
 }
