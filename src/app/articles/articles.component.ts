@@ -21,7 +21,9 @@ export class ArticlesComponent implements OnInit, OnChanges {
   user: any = { Benutzername: "Tobias" };
   currentUser: any;
 
-
+  var commentParts = comments.split("-");
+  var kommentar_Text = commentParts [0] + "Produktname" + commentParts[1];
+ 
 
   constructor(private commentService: commentService,
     private inventoryService: InventoryService, 
@@ -69,8 +71,6 @@ export class ArticlesComponent implements OnInit, OnChanges {
 //  return comment.join " " + Produktname.join ;
 //  };
 
-// var stringParts = comment.split("-");
-// var neuerKommentar = stringParts [0] + "Produktname" + StringParts[1];
 
 
   addToInventory(article) {
