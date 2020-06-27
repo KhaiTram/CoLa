@@ -61,11 +61,16 @@ export class ArticlesComponent implements OnInit, OnChanges {
   };
 
   
+
+
 // function buildComment(comment: string[], Produktname?: string[]) {
 //   if (value.User_Benutzername = othis.user.Benutzername) {
 //    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
 //  return comment.join " " + Produktname.join ;
 //  };
+
+// var stringParts = comment.split("-");
+// var neuerKommentar = stringParts [0] + "Produktname" + StringParts[1];
 
 
   addToInventory(article) {
