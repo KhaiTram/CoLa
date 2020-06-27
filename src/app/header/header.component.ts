@@ -14,17 +14,24 @@ export class HeaderComponent implements OnInit
   
   constructor( private AuthService: AuthService) { }
 
+  //This function gets called first and automatically after the page is loaded
   ngOnInit(): void 
   {
+    //A call to the AuthService to start gathering the later needed data from the database
     this.AuthService.subcribeToData();
+    //As this is an asynchron operation the simplest solution to enable functioning as intended, is to delay this function till the data is received.
     setTimeout(() => {this.cookieLogin() }, 1000);
   }
 
+  //A debug function to post the current user
   public getCurrentUser()
   {
     console.log(this.AuthService.getCurrentUser());
   }
 
+  //This function gathers the username and password entered on the html page, passes them along to the AuthService
+  //and depending on the outcome does update the html page to show a login and creates a cookie or does nothing but
+  //alert an unsuccessful login attempt
   public login()
   {      
     const loginElement = <HTMLInputElement> document.getElementById("loginNameField");
@@ -49,6 +56,7 @@ export class HeaderComponent implements OnInit
     }  
   }
 
+  //Reading the username from a trusted cookie and attempts a login
   public cookieLogin()
   {
     var coockieName = document.cookie;
@@ -66,6 +74,7 @@ export class HeaderComponent implements OnInit
     }
   }
 
+  //The logout function resets the page to its logout state and marks the cookie as expired, for good measure the site is then reloaded
   public logout()
   {
     this.AuthService.logout();
@@ -75,6 +84,7 @@ export class HeaderComponent implements OnInit
     location.reload();
   }
 
+  //This is a go between the logout function and the logout/login button just in case the need arises to call upon the logout function directly
   public logButton()
   {
     if(this.AuthService.getLoginStatus())
