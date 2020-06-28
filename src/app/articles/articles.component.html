@@ -1,3 +1,4 @@
+<app-header></app-header>
 
 <div class="fluid-Container">
     <div class="row">
@@ -9,19 +10,19 @@
         <div class="col-sm-1">
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-success" (click)="filterBy=0">Alles</button>
+            <button class="btn categories" width=100% (click)="filterBy=0">Alles</button>
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-success" (click)="filterBy=1">Nahrungsmittel</button>
+            <button class="btn categories" (click)="filterBy=1">Nahrungs mittel</button>
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-success" (click)="filterBy=2">Haushaltsartikel</button>
+            <button class="btn categories" (click)="filterBy=2">Haushalts artikel</button>
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-success" (click)="filterBy=3">Büroartikel</button>
+            <button class="btn categories" (click)="filterBy=3">Büroartikel</button>
         </div>
         <div class="col-sm-2">
-            <button class="btn btn-success" (click)="filterBy=4">Sonstiges</button>
+            <button class="btn categories" (click)="filterBy=4">Sonstiges</button>
         </div>
         <div class="col-sm-1">
         </div>
@@ -38,7 +39,9 @@
     </div>
 
     <button id="button" class="btn-primary" (click) ="onClick()" >Speichern</button>
-
+<br>
+<br>
+<br>
 
 
     <div id="modal" class="bg-modal">

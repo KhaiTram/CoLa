@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design for Bootstrap</title>
-  
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-</head>
-<body>
+
 
   <!-- Start your project here-->  
 
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+<nav class="navbar navbar-expand-lg navbar-dark white-color">
 
   <!-- Navbar brand -->
-  <a class="navbar-brand" href="#">CoLa</a>
+  <a class="navbar-brand" href="#">
+    <img src="assets/Images/ColaLogo.png" class="img" width="30%" height="auto">
+  </a>
 
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -36,16 +22,52 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a (click)="getCurrentUser()"class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
+        <a (click)="getCurrentUser()"class="nav-link text-primary" href="/">Lager
+          <span class="sr-only text-warning">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <div class="text-center">
+          <a class="nav-link text-primary" href="#">Bewertungen</a>
+        </div>
+        
       </li>
-
-
+      <li class="nav-item">
+        <a class="nav-link text-primary" data-toggle="modal" data-target=#modalPasswordReset>Einstellungen</a>
+      </li>
     </ul>
+
+    <div class="modal fade" id="modalPasswordReset" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Passwort ändern</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fas fa-envelope prefix grey-text"></i>
+            <input type="email" id="emailField" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="emailField"></label>
+          </div>
+  
+          <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <input type="password" id="pswField" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="pswField"></label>
+          </div>
+  
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button (click)="login()" class="btn btn-primary">Passwort ändern</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Links -->
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -73,14 +95,15 @@
   
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button  (click)="login()" class="btn btn-default">Login</button>
+          <button (click)="login()" class="btn btn-primary">Login</button>
+          <button class="btn btn-default" data-dismiss="modal" routerLink = "/register" >Register</button>
         </div>
       </div>
     </div>
   </div>
   
   <div class="text-center">
-    <a (click)="logButton()" href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target=#modalLoginForm>{{text}}</a>
+    <a (click)="logButton()" href="" class="btn btn btn-primary btn-rounded mb-4" data-toggle="modal" data-target=#modalLoginForm>{{text}}</a>
   </div>
     
   </div>
@@ -88,19 +111,5 @@
 
 </nav>
 <!--/.Navbar-->
-
-
-
-
-
-  <!-- End your project here-->
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-
-</body>
-</html>
 
 <router-outlet></router-outlet>
