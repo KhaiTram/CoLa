@@ -243,6 +243,42 @@ app.get('/Lagerbestand', function (req, res) {
     });
 });
 
+app.put('/Lagerbestand', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    var Inventory;
+    req.on('data',function(data) {
+        
+        Inventory= JSON.parse(data.toString()); 
+        const Benutzername = Inventory.User_Benutzername;
+        const Produktname = Inventory.Artikel_Produktname;
+        const Menge = Inventory.Menge
+    
+        con.connect(function (err) {
+            if (err) throw err;
+
+            //Update a record in the "customers" table:
+
+            var beforeSql = 'UPDATE Lagerbestand SET Menge = ? WHERE User_Benutzername = ? AND Artikel_Produktname = ? ';
+            var inserts = [Menge, Benutzername, Produktname];
+            sql = mysql.format(beforeSql, inserts);
+           
+            con.query(sql,  function (err, result) {
+                if (err) throw err;
+                console.log("1 record updated");
+            });
+
+            con.end();
+        });
+    });
+});
+
 
 app.listen(8080, function () {
     console.log('Erfolg!');

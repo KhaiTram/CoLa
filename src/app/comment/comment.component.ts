@@ -14,6 +14,7 @@ export class CommentComponent implements OnInit {
     )
      {}
 
+  //This function gets called first and automatically after the page is loaded
   ngOnInit(): void {
     this.commentService.getComments()
     .subscribe(data => this.comments = data); 

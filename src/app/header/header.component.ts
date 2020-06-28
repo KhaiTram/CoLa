@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit
     //A call to the AuthService to start gathering the later needed data from the database
     this.AuthService.subcribeToData();
     //As this is an asynchron operation the simplest solution to enable functioning as intended, is to delay this function till the data is received.
-    setTimeout(() => {this.cookieLogin() }, 1000);
+    setTimeout(() => {this.cookieLogin() }, 500);
   }
 
   //A debug function to post the current user
@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit
       alert("Erfolgreicher Login")
       document.cookie = "username="+username; 
       this.text = "Logout";
+      window.location.reload()
     }
     else
     {
