@@ -13,8 +13,9 @@ import { AuthService } from '../auth.service';
 
 export class ArticlesComponent implements OnInit, OnChanges {
 
-  articles: any[];
+  articles: any[] = [];
   filterBy?: number = 0
+
   UserArticles: any[] = [];
   comments: any[];
   inventories: any[];
@@ -24,23 +25,25 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
 
   constructor(private commentService: commentService,
-    private inventoryService: InventoryService, 
+    private inventoryService: InventoryService,
     private authService: AuthService) { }
 
   ngOnInit() {
     this.commentService.getComments().subscribe(data => this.comments = data);
+    setTimeout(() => { this.currentUser = this.authService.getCurrentUser(); }, 1000);
     this.inventoryService.getInventoryProducts().subscribe(data => {
-      this.UserArticles = data.filter(x => x.User_Benutzername === this.user.Benutzername);
+      setTimeout(() => { this.UserArticles = data.filter(x => x.User_Benutzername === this.currentUser.Benutzername) }, 1100);
     });
-    this.currentUser = this.authService.getCurrentUser();
+
   };
 
   ngOnChanges() {
+
   };
 
   substract(index) {
 
-    if (this.UserArticles[index].Menge > 0){
+    if (this.UserArticles[index].Menge > 0) {
       this.UserArticles[index].Menge--;
     }
   };
@@ -51,31 +54,41 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
   onClick() {
     console.log(this.currentUser);
-    this.UserArticles.forEach(value =>{
+    this.UserArticles.forEach(value => {
       this.addToInventory(value);
       if (value.Menge > value.MaximaleAnzahl) {
-        console.log(value);
+        //  console.log(value);
       }
     });
+    this.updateInventory();
     document.getElementById('modal').style.display = "flex";
   };
 
-  
+  updateInventory() {
+    console.log(this.articles);
+    this.articles.forEach(value => {
+      this.inventoryService.putInventories(value).subscribe(data => { });
+    })
+
+  }
 
 
-// function buildComment(comment: string[], Produktname?: string[]) {
-//   if (value.User_Benutzername = othis.user.Benutzername) {
-//    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
-//  return comment.join " " + Produktname.join ;
-//  };
+  // function buildComment(comment: string[], Produktname?: string[]) {
+  //   if (value.User_Benutzername = othis.user.Benutzername) {
+  //    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
+  //  return comment.join " " + Produktname.join ;
+  //  };
 
-// var stringParts = comment.split("-");
-// var neuerKommentar = stringParts [0] + "Produktname" + StringParts[1];
+  // var stringParts = comment.split("-");
+  // var neuerKommentar = stringParts [0] + "Produktname" + StringParts[1];
 
 
   addToInventory(article) {
-
-    
+    this.articles.push({
+      User_Benutzername: article.User_Benutzername,
+      Artikel_Produktname: article.Artikel_Produktname,
+      Menge: article.Menge
+    })
   }
 
   onClose() {

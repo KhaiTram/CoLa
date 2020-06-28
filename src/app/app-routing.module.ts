@@ -17,7 +17,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
-  {path: 'articles', component: ArticlesComponent},
+  {path: '', component: ArticlesComponent},
   {path: 'articles-list', component: ArticleListComponent},
   {path: 'inventory', component: InventoryComponent},
   {path: 'register', component: RegisterComponent},
