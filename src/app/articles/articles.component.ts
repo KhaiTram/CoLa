@@ -20,7 +20,7 @@ export class ArticlesComponent implements OnInit, OnChanges {
   criticalArticles: any[] = [];
   comments: any[];
   comment: any;
-  usercomment: any;
+  usercomment: any ={User_Benutzername: "", Kommentar_ID: "", Kommentar_Text: ""};
   inventories: any[];
   user: any = { Benutzername: "Tobias" };
   currentUser: any;
@@ -62,7 +62,7 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
 
   onClick() {
-    console.log(this.currentUser);
+    console.log(this.UserArticles);
     this.UserArticles.forEach(value => {
       this.addToInventory(value);
       if (value.Menge > value.MaximaleAnzahl) {
@@ -81,9 +81,9 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
   createComment() {
     var article = this.criticalArticles[0];
-    var comment = this.comments.find(element =>  element.ID = article.Category);
-    var commentParts = comment.split("-");
-    var kommentar_Text = commentParts [0] + "Produktname" + commentParts[1];
+    var comment = this.comments.find(element =>  element.ID === article.Category);
+    var commentParts = comment.Kommentar_Text.split("-");
+    var kommentar_Text = commentParts [0] + article.Produktname + commentParts[1];
     this.usercomment = {User_Benutzername: this.currentUser.Benutzername, Kommentar_ID: comment.ID, Kommentar_Text: kommentar_Text};
   }
 
@@ -92,18 +92,10 @@ export class ArticlesComponent implements OnInit, OnChanges {
     this.articles.forEach(value => {
       this.inventoryService.putInventories(value).subscribe(data => { });
     })
+    this.articles = [];
+    this.criticalArticles = [];
     console.log(this.usercomment);
   }
-
-
-<<<<<<< HEAD
-=======
-  // function buildComment(comment: string[], Produktname?: string[]) {
-  //   if (value.User_Benutzername = othis.user.Benutzername) {
-  //    if (value.Menge > othis.allArticles.find(x => x.Produktname === value.Artikel_Produktname).MaximaleAnzahl) {
-  //  return comment.join " " + Produktname.join ;
-  //  };
->>>>>>> master
 
 
 
