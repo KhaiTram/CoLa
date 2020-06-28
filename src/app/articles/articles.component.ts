@@ -15,8 +15,10 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
   articles: any[] = [];
   filterBy?: number = 0
-
+  
   UserArticles: any[] = [];
+
+  // The articles which exceed the maximum number
   criticalArticles: any[] = [];
   comments: any[];
   comment: any;
@@ -24,10 +26,6 @@ export class ArticlesComponent implements OnInit, OnChanges {
   inventories: any[];
   user: any = { Benutzername: "Tobias" };
   currentUser: any;
-
-  // The Comment is splitted by a "-", whereby the respective product name which
-  // reached the maximum limit is inserted
-
  
 
   constructor(private commentService: commentService,
@@ -35,7 +33,6 @@ export class ArticlesComponent implements OnInit, OnChanges {
     private authService: AuthService) { }
 
 
-// The Product quantity in the user's warehouse is compared with the maximum value.   
   ngOnInit() {
     this.commentService.getComments().subscribe(data => this.comments = data);
     setTimeout(() => { this.currentUser = this.authService.getCurrentUser(); }, 1000);
@@ -61,6 +58,7 @@ export class ArticlesComponent implements OnInit, OnChanges {
   };
 
 
+  // The Product quantity in the user's warehouse is compared with the maximum value.   
   onClick() {
     console.log(this.UserArticles);
     this.UserArticles.forEach(value => {
@@ -78,7 +76,8 @@ export class ArticlesComponent implements OnInit, OnChanges {
     document.getElementById('modal').style.display = "flex";
   };
 
-
+  
+  // The Comment is splitted by a "-", whereby the respective product name is inserted
   createComment() {
     var article = this.criticalArticles[0];
     var comment = this.comments.find(element =>  element.ID === article.Category);
