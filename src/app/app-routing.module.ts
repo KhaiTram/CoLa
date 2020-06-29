@@ -4,6 +4,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { RegisterComponent } from './register/register.component';
 import { CommentComponent } from './comment/comment.component';
 import { HeaderComponent } from './header/header.component';
+import { ArchiveComponent } from './archive/archive.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'comment', component: CommentComponent},
   {path: 'header', component: HeaderComponent},
+  {path: 'archive', component: ArchiveComponent},
   {path: 'changePassword', component: ChangePasswordComponent}
 ];
 
@@ -22,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[ArticlesComponent, RegisterComponent, CommentComponent, HeaderComponent, ChangePasswordComponent]
+export const routingComponents =[ArticlesComponent, RegisterComponent, CommentComponent, HeaderComponent,ArchiveComponent, ChangePasswordComponent]

@@ -271,7 +271,70 @@ app.put('/Lagerbestand', function (req, res) {
            
             con.query(sql,  function (err, result) {
                 if (err) throw err;
-                console.log("1 record updated");
+                console.log("1 inventory updated");
+            });
+
+            con.end();
+        });
+    });
+});
+
+//----------------ARCHIVE-METHODS---------------------------------------------------
+
+app.get('/Archive', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    
+    con.connect(function (err) {
+        if (err) throw err;
+        console.log("connected");
+        var sql = "SELECT * FROM Kommentararchiv ORDER BY ID DESC";
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+
+            res.send(result);
+        });
+
+        con.end();
+
+    });
+});
+
+app.post('/Archive', function (req, res) {
+    var con = mysql.createConnection({
+        database: "20_Gruppe1_DB",
+        port: "20133",
+        host: "195.37.176.178",
+        user: "Gruppe1New",
+        password: "Z$RrjuBp3Q'a;A;2fwZW4:A+Cxxo9gLd"
+    });
+
+    var archive;
+    req.on('data',function(data) {
+        
+        archive= JSON.parse(data.toString()); 
+        const benutzername = archive.User_Benutzername;
+        const kommentarId = archive.Kommentar_ID;
+        const kommentartext = archive.Kommentartext;
+
+    
+    
+
+        con.connect(function (err) {
+            if (err) throw err;
+            //Insert a record in the "customers" table:
+            var post  = {User_Benutzername: benutzername, Kommentar_ID: kommentarId, Kommentartext: kommentartext};
+            var sql = 'INSERT INTO Kommentararchiv SET ?';
+
+            con.query(sql,post, function (err, result) {
+                if (err) throw err;
+                console.log("1 archive inserted");
             });
 
             con.end();

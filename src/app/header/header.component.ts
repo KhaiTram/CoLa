@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import {UserService} from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +13,16 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent implements OnInit
  {
   text = "Login";
+  newUser :User = {
+    Benutzername: '',
+    Email: '',
+    Vorname: '',
+    Nachname: '',
+    Passwort: ''
+  };
+
   
-  constructor( private AuthService: AuthService) { }
+  constructor( private AuthService: AuthService, private userService: UserService) { }
 
   //This function gets called first and automatically after the page is loaded
   ngOnInit(): void 
@@ -72,6 +82,16 @@ export class HeaderComponent implements OnInit
     else
     {
       console.log("No User logged in")
+    }
+  }
+
+  ChangePassword(){
+    if (this.newUser.Email === this.AuthService.getCurrentUser().Email){
+    this.userService.putUsers(this.newUser).subscribe(data => {})
+    alert("Passwort geändert"); 
+    }
+    else {
+      alert("ungültige Eingabe"); 
     }
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { commentService } from '../comment.service';
 import { InventoryService } from '../inventory.service';
 import { AuthService } from '../auth.service';
+import { ArchiveService} from '../archive.service';
 
 @Component({
   selector: 'app-articles',
@@ -30,7 +31,8 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
   constructor(private commentService: commentService,
     private inventoryService: InventoryService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private archiveService: ArchiveService) { }
 
 
   ngOnInit() {
@@ -79,21 +81,28 @@ export class ArticlesComponent implements OnInit, OnChanges {
   
   // The Comment is splitted by a "-", whereby the respective product name is inserted
   createComment() {
-    var article = this.criticalArticles[0];
-    var comment = this.comments.find(element =>  element.ID === article.Category);
-    var commentParts = comment.Kommentar_Text.split("-");
-    var kommentar_Text = commentParts [0] + article.Produktname + commentParts[1];
-    this.usercomment = {User_Benutzername: this.currentUser.Benutzername, Kommentar_ID: comment.ID, Kommentar_Text: kommentar_Text};
+    var commentText;
+    if (this.criticalArticles.length === 0){
+      this.comment = this.comments.find(element =>  element.ID === 5);
+      commentText = this.comment.Kommentar_Text
+    }else{
+      var article = this.criticalArticles[0];
+      this.comment = this.comments.find(element =>  element.ID === article.Category);
+      var commentParts = this.comment.Kommentar_Text.split("-");
+      commentText = commentParts [0] + article.Produktname + commentParts[1];
+    }
+    console.log(this.criticalArticles);
+    console.log(this.comment);
+      this.usercomment = {User_Benutzername: this.currentUser.Benutzername, Kommentar_ID: this.comment.ID, Kommentartext: commentText};
   }
 
   updateInventory() {
-    console.log(this.articles);
+    this.archiveService.postArchive(this.usercomment).subscribe(date => {});
     this.articles.forEach(value => {
       this.inventoryService.putInventories(value).subscribe(data => { });
     })
     this.articles = [];
     this.criticalArticles = [];
-    console.log(this.usercomment);
   }
 
 

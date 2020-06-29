@@ -13,6 +13,8 @@ import { commentService} from './comment.service';
 import { InventoryService } from './inventory.service';
 import { FilterArticlesPipe } from "./filterArticles.pipe";
 import { AuthService } from './auth.service';
+import { ArchiveService} from './archive.service';
+
 
 
 
@@ -21,7 +23,7 @@ import { AuthService } from './auth.service';
   declarations: [
     AppComponent,
     routingComponents,
-    FilterArticlesPipe
+    FilterArticlesPipe,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { AuthService } from './auth.service';
     InventoryService,
     ProductCategoryService,
     FilterArticlesPipe,
-    AuthService],
+    AuthService,
+    ArchiveService],
   bootstrap: [AppComponent]
 })
 

@@ -1,6 +1,4 @@
-
-
-  <!-- Start your project here-->  
+<!-- Start your project here-->
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark white-color">
@@ -22,15 +20,15 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a (click)="getCurrentUser()"class="nav-link text-primary" href="/">Lager
+        <a (click)="getCurrentUser()" class="nav-link text-primary" href="/">Lager
           <span class="sr-only text-warning">(current)</span>
         </a>
       </li>
       <li class="nav-item">
         <div class="text-center">
-          <a class="nav-link text-primary" href="#">Bewertungen</a>
+          <a class="nav-link text-primary" routerLink="/archive" href="#">Bewertungen</a>
         </div>
-        
+
       </li>
       <li class="nav-item">
         <a class="nav-link text-primary" data-toggle="modal" data-target=#modalPasswordReset>Einstellungen</a>
@@ -38,74 +36,78 @@
     </ul>
 
     <div class="modal fade" id="modalPasswordReset" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Passwort ändern</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-            <i class="fas fa-envelope prefix grey-text"></i>
-            <input type="email" placeholder="E-Mail" id="emailField" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="emailField"></label>
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Passwort ändern</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-  
-          <div class="md-form mb-4">
-            <i class="fas fa-lock prefix grey-text"></i>
-            <input type="password" placeholder="Passwort" id="passwordField" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="passwordField"></label>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" placeholder="E-Mail" [(ngModel)]="newUser.Email" id="emailField"
+                class="form-control validate">
+              <label data-error="wrong" data-success="right" for="emailField"></label>
+            </div>
+
+            <div class="md-form mb-4">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" [(ngModel)]="newUser.Passwort" placeholder="Passwort" id="passwordField"
+                class="form-control validate">
+              <label data-error="wrong" data-success="right" for="passwordField"></label>
+            </div>
+
+
           </div>
-  
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button (click)="login()" class="btn btn-primary">Passwort ändern</button>
+          <div class="modal-footer d-flex justify-content-center">
+            <button (click)="ChangePassword()" data-dismiss="modal" class="btn btn-primary">Passwort ändern</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <!-- Links -->
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-            <i class="fas fa-envelope prefix grey-text"></i>
-            <input type="email" id="loginNameField" placeholder="Username" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="loginNameField"></label>
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-  
-          <div class="md-form mb-4">
-            <i class="fas fa-lock prefix grey-text"></i>
-            <input type="password" id="pswField" placeholder="Passwort" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="pswField"></label>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="loginNameField" placeholder="Username" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="loginNameField"></label>
+            </div>
+
+            <div class="md-form mb-4">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="pswField" placeholder="Passwort" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="pswField"></label>
+            </div>
+
           </div>
-  
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button (click)="login()" class="btn btn-primary">Login</button>
-          <button class="btn btn-default" data-dismiss="modal" routerLink = "/register" >Register</button>
+          <div class="modal-footer d-flex justify-content-center">
+            <button (click)="login()" class="btn btn-primary">Login</button>
+            <button class="btn btn-default" data-dismiss="modal" routerLink="/register">Register</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="text-center">
-    <a (click)="logButton()" href="" class="btn btn btn-primary btn-rounded mb-4" data-toggle="modal" data-target=#modalLoginForm>{{text}}</a>
-  </div>
-    
+
+    <div class="text-center">
+      <a (click)="logButton()" href="" class="btn btn btn-primary btn-rounded mb-4" data-toggle="modal"
+        data-target=#modalLoginForm>{{text}}</a>
+    </div>
+
   </div>
   <!-- Collapsible content -->
 
