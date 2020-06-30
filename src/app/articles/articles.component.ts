@@ -13,19 +13,26 @@ import { ArchiveService} from '../archive.service';
 
 
 export class ArticlesComponent implements OnInit, OnChanges {
-
+  // all articles in our databse
   articles: any[] = [];
   filterBy?: number = 0
   
+  //all artlicles of the logged in user
   UserArticles: any[] = [];
 
   // The articles which exceed the maximum number
   criticalArticles: any[] = [];
+
+  // all comments of our database
   comments: any[];
+
+  // comment for our current inventory before insert of productname
   comment: any;
+
+  //comment for our current inventory
   usercomment: any ={User_Benutzername: "", Kommentar_ID: "", Kommentar_Text: ""};
-  inventories: any[];
-  user: any = { Benutzername: "Tobias" };
+
+  //currently logged in User
   currentUser: any;
  
 
@@ -62,14 +69,11 @@ export class ArticlesComponent implements OnInit, OnChanges {
 
   // The Product quantity in the user's warehouse is compared with the maximum value.   
   onClick() {
-    console.log(this.UserArticles);
     this.UserArticles.forEach(value => {
       this.addToInventory(value);
+      //compare amount with a threshhold which is safed the articals and safes them in critical articles
       if (value.Menge > value.MaximaleAnzahl) {
-        //  console.log(value);
-        
         var offlimit = value.Menge - value.MaximaleAnzahl
-        
         this.criticalArticles.push({Produktname: value.Produktname, Offlimit: offlimit, Category: value.Produktkategorie_ID});
       }
     });
@@ -82,17 +86,17 @@ export class ArticlesComponent implements OnInit, OnChanges {
   // The Comment is splitted by a "-", whereby the respective product name is inserted
   createComment() {
     var commentText;
+    // if we dont have critical articles we look for the comment with the positive feedback and save it in comment 
     if (this.criticalArticles.length === 0){
       this.comment = this.comments.find(element =>  element.ID === 5);
       commentText = this.comment.Kommentar_Text
-    }else{
+    }//otherwise we look for the comment which fits our inventory and insert the productname in our comment
+    else{
       var article = this.criticalArticles[0];
       this.comment = this.comments.find(element =>  element.ID === article.Category);
       var commentParts = this.comment.Kommentar_Text.split("-");
       commentText = commentParts [0] + article.Produktname + commentParts[1];
     }
-    console.log(this.criticalArticles);
-    console.log(this.comment);
       this.usercomment = {User_Benutzername: this.currentUser.Benutzername, Kommentar_ID: this.comment.ID, Kommentartext: commentText};
   }
 
@@ -106,7 +110,7 @@ export class ArticlesComponent implements OnInit, OnChanges {
   }
 
 
-
+  //The articles are safed differently so that it fits our database
   addToInventory(article) {
     this.articles.push({
       User_Benutzername: article.User_Benutzername,
